@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realizar Delegación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/autorizaciones.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="nav">
+            <div class="container">
+                <h1 class="logo"><a href="#">RELACIONAMIENTO DE PERSONAS</a></h1>
+                <ul>
+                    <li><a href="/html/menuPrincipal.html" class="current">Home</a></li>
+                    <li><a href="/html/reporte.html">Reportes</a></li>
+                    <li><a href="/html/actualizacionDeDatos.html" class="actu">Actualizar datos</a></li>
+                    <li><a href="/html/autorizaciones.html">Autorizaciones</a></li>
+                    <li><a href="/html/notificaciones.html">Notificaciones</a></li>
+                    <li><a href="/html/landingPage.html">Cerrar Sesion</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main">
+
+        <div class="delegacion">
+            <div class="delegacion-texto">
+                <p class="subtitulo">REALIZAR DELEGACIÓN</p>
+                <form class="formDelegacion">
+                    <label for="email">Persona a autorizar</label>
+                    <input type="email" name="email" id="email"><br>
+                    <br>
+                    <label for="dni">DNI</label>
+                    <input type="text" name="text" id="text"><br>
+                    <br>
+                    <input class="autorizarbtn" type="submit" value="Autorizar">
+
+                </form>
+            </div>
+        </div>
+
+
+</body>
+
+</html>
