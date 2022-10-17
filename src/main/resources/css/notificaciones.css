@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+body {
+    background: linear-gradient(to right, rgb(223, 17, 134), rgb(31, 200, 175));
+    color: rgb(0, 0, 0);
+    font-family: 'Open Sans', sans-serif;
+    padding-bottom: 50px;
+    align-items: center;
+}
+
+.container {
+    margin: auto;
+    max-width: 1200px;
+    align-items: center;
+}
+
+.nav {
+    background-color: #222222;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    justify-content: justify;
+    transition: all 0.3s ease-in-out;
+}
+
+.logo {
+    align-items: center;
+    margin-bottom: 25px;
+    justify-content: justify;
+    text-align: center;
+    color: rgb(31, 200, 175);
+}
+
+.nav ul {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    font-size: 25px;
+    flex-wrap: row nowrap;
+}
+
+.nav a {
+    align-items: center;
+    color: #ffffff;
+    padding: 7px 15px;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out;
+    font-weight: bold;
+    font-family: Tahoma;
+
+}
+
+.nav.active {
+    align-items: center;
+    background-color: #b3fff9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav.active a {
+    align-items: center;
+    color: rgb(255, 255, 255);
+}
+
+.nav.active .container {
+    align-items: center;
+    padding: 10px 0;
+}
+
+.nav a.current,
+.nav a:hover {
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.notificaciones {
+    margin-top: 8rem;
+    font-size: 20px;
+    /*center text*/
+    text-align: center;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*separar los items del flex*/
+    gap: 2rem;                    
+}
+
+.botonAceptar {
+    background-color: green;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    opacity: 0.9;
+    font-size: 20px;
+}
+
+.botonRechazar{
+    background-color: red;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    opacity: 0.9;
+    font-size: 20px;
+}
