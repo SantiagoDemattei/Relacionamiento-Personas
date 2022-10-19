@@ -1,0 +1,32 @@
+[
+  {
+    "dni": 1,
+    "nombre":"Graciela",
+    "apellido":"Valls"
+  },
+  {
+    "dni": 2,
+    "nombre":"Fermina",
+    "apellido":"Rojas"
+  },
+  {
+    "dni": 3,
+    "nombre":"Emilio",
+    "apellido":"Montilla"
+  },
+  {
+    "dni": 4,
+    "nombre":"Hugo",
+    "apellido":"Calleja"
+  },
+  {
+    "dni": 5,
+    "nombre":"Sabrina",
+    "apellido":"Moral"
+  },
+  {
+    "dni": 6,
+    "nombre":"Leonardo",
+    "apellido":"Andres"
+  }
+]
