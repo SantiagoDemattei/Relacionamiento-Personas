@@ -78,7 +78,7 @@ public class UsuarioService {
         return esPersonaAutorizada && !yaRegistrada;
     }
 
-    private List<Persona> getPersonsFromJSON() throws IOException { //obtiene la lista de personas del json
+    public List<Persona> getPersonsFromJSON() throws IOException { //obtiene la lista de personas del json
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File("src/main/resources/personas.json"), new TypeReference<>() {
         });
