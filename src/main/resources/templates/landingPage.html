@@ -1,38 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head class="head">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pagina principal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="../static/landingPage.css">
-
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagina principal</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link th:href="@{landingPage.css}" rel="stylesheet" />
 </head>
-
-
 <body>
-    <h1 class="titulo-principal">BIENVENIDO</h1>
-    <form class="menu">
-        <div class="contenedor-base">
-            <div class="opciones">
+<h1 class="titulo-principal">BIENVENIDO</h1>
+<form class="menu">
+  <div class="contenedor-base">
+    <div class="opciones">
 
-                <a href="registro.html" style="text-decoration:none">
-                    <button class="button" type="button">Registro</button>
-                </a>
+      <a th:href="@{registro.html}" style="text-decoration:none">
+        <button class="button" type="button">registro</button>
+      </a>
 
-                <br>
+      <br>
 
-                <a href="inicioDeSesion.html" style="text-decoration:none">
-                    <button class="button" type="button">Inicio de Sesión</button>
-                </a>
+      <a th:href="@{iniciodesesion.html}" style="text-decoration:none">
+        <button class="button" type="button">Inicio de Sesión</button>
+      </a>
 
-            </div>
-        </div>
-    </form>
+    </div>
+  </div>
+</form>
 </body>
-
 </html>
