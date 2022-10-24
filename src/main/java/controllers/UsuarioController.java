@@ -9,6 +9,7 @@ import services.UsuarioService;
 
 import java.io.IOException;
 
+@Controller
 public class UsuarioController {
 
     private final UsuarioService uService;
@@ -32,4 +33,5 @@ public class UsuarioController {
     public Boolean logearUsuario(@RequestBody Usuario user) {
         return uService.logear(user);
     }
+
 }

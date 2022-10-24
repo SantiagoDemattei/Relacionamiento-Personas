@@ -38,17 +38,24 @@ public class Persona {
     @Column(name = "persona_foto")
     private String foto; //Base64 code REVISAR
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "delegado", cascade = CascadeType.ALL)
     private List<Delegacion> delegacionesAceptadasPropias;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "delegador", cascade = CascadeType.ALL)
     private List<Delegacion> delegacionesParaAutorizarAOtros;
 
+    @JsonIgnore
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, orphanRemoval = true)
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     public Persona(String dni, String nombre, String apellido) {
+    }
+
+    public Persona() {
+
     }
 
     private void aceptarDelegacion(Delegacion d) {

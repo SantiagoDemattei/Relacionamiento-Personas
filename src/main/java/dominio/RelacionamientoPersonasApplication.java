@@ -1,5 +1,6 @@
 package dominio;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import repositorios.RepoPersona;
@@ -14,7 +15,7 @@ import java.util.List;
 @SpringBootApplication
 public class RelacionamientoPersonasApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		SpringApplication.run(RelacionamientoPersonasApplication.class, args);
 	}
 }
