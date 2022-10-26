@@ -19,6 +19,8 @@ public class UsuarioController {
         this.uService = uService;
     }
 
+
+
     @GetMapping(path = "{userId}")
     public Usuario getUserById(@PathVariable("userId") Long uId) {
         return uService.obtenerUsuario(uId);

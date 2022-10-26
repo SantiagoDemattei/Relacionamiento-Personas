@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pagina principal</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,14 +14,14 @@
   <div class="contenedor-base">
     <div class="opciones">
 
-      <a th:href="@{registro.html}" style="text-decoration:none">
-        <button class="button" type="button">registro</button>
+      <a th:href="@{registro}" style="text-decoration:none">
+        <button class="button" type="button" value="registro">Registro</button>
       </a>
 
       <br>
 
-      <a th:href="@{iniciodesesion.html}" style="text-decoration:none">
-        <button class="button" type="button">Inicio de Sesión</button>
+      <a th:href="@{iniciodesesion}" style="text-decoration:none">
+        <button class="button" type="button" value="iniciodesesion">Inicio de Sesión</button>
       </a>
 
     </div>
