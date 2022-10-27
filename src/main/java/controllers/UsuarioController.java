@@ -9,7 +9,7 @@ import services.UsuarioService;
 
 import java.io.IOException;
 
-@Controller
+@RestController
 public class UsuarioController {
 
     private final UsuarioService uService;
@@ -26,7 +26,7 @@ public class UsuarioController {
         return uService.obtenerUsuario(uId);
     }
 
-    @PostMapping(path = "signup")
+    @PostMapping(path = "/Registro")
     public void registrarUsuario(@RequestBody Persona persona) throws IOException {
         uService.registrar(persona);
     }

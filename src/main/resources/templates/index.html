@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
   <title>Pagina principal</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <link th:href="@{landingPage.css}" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/landingPage.css">
 </head>
 <body>
 <h1 class="titulo-principal">BIENVENIDO</h1>
@@ -14,13 +13,13 @@
   <div class="contenedor-base">
     <div class="opciones">
 
-      <a th:href="@{registro}" style="text-decoration:none">
+      <a href="registro.html" style="text-decoration:none">
         <button class="button" type="button" value="registro">Registro</button>
       </a>
 
       <br>
 
-      <a th:href="@{iniciodesesion}" style="text-decoration:none">
+      <a href="inicioDeSesion.html" style="text-decoration:none">
         <button class="button" type="button" value="iniciodesesion">Inicio de Sesión</button>
       </a>
 
