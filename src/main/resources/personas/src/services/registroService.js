@@ -5,6 +5,7 @@ const BASE_API_URL = "http://localhost:8088"; // que es en donde esta levantado 
 class RegistroService {
   registrar(nombre, apellido, dni, email, password) // todavia no funca ==> la request la bloquea el servidor por las politicas CORS
     {
+        console.log(nombre + apellido + dni + email + password)
         return axios.post(BASE_API_URL + "/registrousuario", {
             method: 'POST',
             json: {

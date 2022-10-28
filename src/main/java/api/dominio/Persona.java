@@ -162,4 +162,6 @@ public class Persona {
     public void setDelegacionesParaAutorizarAOtros(List<Delegacion> delegacionesParaAutorizarAOtros) {
         this.delegacionesParaAutorizarAOtros = delegacionesParaAutorizarAOtros;
     }
+
+
 }

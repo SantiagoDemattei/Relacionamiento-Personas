@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 import repositorios.RepoPersona;
 import repositorios.RepoUsuario;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
 @Service
+@Transactional
 public class UsuarioService {
     private final RepoUsuario repoUsuarios;
     private final RepoPersona repoPersonas;

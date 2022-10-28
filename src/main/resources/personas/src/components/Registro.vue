@@ -1,31 +1,32 @@
 <template>
+  <body class="bodyRegistro">
   <h1>Registro</h1>
   <form class="registro" @submit.prevent="handleSubmit">
-    <label for="nombre">Nombre</label>
+    <label for="nombre">Nombre <span class="obligatorio">*</span></label>
     <input type="text" name="nombre" id="nombre" v-model="nombre"><br>
 
-    <label for="apellido">Apellido</label>
+    <label for="apellido">Apellido <span class="obligatorio">*</span></label>
     <input type="text" name="apellido" id="apellido" v-model="apellido"><br>
 
-    <label for="dni">Dni</label>
+    <label for="dni">Dni <span class="obligatorio">*</span></label>
     <input type="text" name="dni" id="dni" v-model="dni"><br>
 
-    <label for="email">Email</label>
+    <label for="email">Email <span class="obligatorio">*</span></label>
     <input type="email" name="email" id="email" v-model="email"><br>
 
-    <label for="password">Contraseña</label>
+    <label for="password">Contraseña <span class="obligatorio">*</span></label>
     <input type="password" name="password" id="password" v-model="password"><br>
 
-    <label for="password2">Repetir contraseña</label>
+    <label for="password2">Repetir contraseña <span class="obligatorio">*</span></label>
     <input type="password" name="password2" id="password2" v-model="password2"><br>
 
     <input class="registerbtn" type="submit" value="Registrarse">
-
   </form>
+  </body>
 </template>
 
 <style>
-body {
+.bodyRegistro {
   background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
 }
 
@@ -91,6 +92,10 @@ hr {
 .signin {
   background-color: #f1f1f1;
   text-align: center;
+}
+
+.obligatorio {
+  color: red;
 }
 </style>
 
