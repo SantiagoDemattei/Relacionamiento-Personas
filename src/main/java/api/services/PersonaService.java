@@ -1,17 +1,17 @@
-package services;
+package api.services;
 
-import dominio.Persona;
+import api.dominio.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositorios.RepoPersona;
+import api.repositorios.RepoPersona;
 
 import javax.transaction.Transactional;
 
 @Service
 public class PersonaService {
+    @Autowired
     private final RepoPersona repoPersona;
 
-    @Autowired
     public PersonaService(RepoPersona repoPersona) {
         this.repoPersona = repoPersona;
     }

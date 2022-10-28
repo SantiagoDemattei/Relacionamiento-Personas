@@ -1,22 +1,23 @@
-package services;
+package api.services;
 
 
-import dominio.Delegacion;
-import dominio.Persona;
+import api.dominio.Delegacion;
+import api.dominio.Persona;
+import api.repositorios.RepoDelegacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositorios.RepoDelegacion;
-import repositorios.RepoPersona;
+import api.repositorios.RepoPersona;
 
 import java.util.List;
 
 @Service
 public class AdminService {
 
+    @Autowired
     private final RepoPersona repoPersona;
+    @Autowired
     private final RepoDelegacion repoDelegacion;
 
-    @Autowired
     public AdminService(RepoPersona repoPersonas, RepoDelegacion repoDelegaciones) {
         this.repoPersona = repoPersonas;
         this.repoDelegacion = repoDelegaciones;

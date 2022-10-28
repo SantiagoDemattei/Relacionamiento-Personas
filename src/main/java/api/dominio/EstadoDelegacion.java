@@ -1,4 +1,4 @@
-package dominio;
+package api.dominio;
 
 public enum EstadoDelegacion {
     ESPERA,

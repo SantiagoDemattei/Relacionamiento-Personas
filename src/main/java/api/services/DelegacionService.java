@@ -1,21 +1,22 @@
-package services;
+package api.services;
 
-import dominio.Delegacion;
-import dominio.EstadoDelegacion;
-import dominio.Persona;
+import api.dominio.Delegacion;
+import api.dominio.EstadoDelegacion;
+import api.dominio.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositorios.RepoDelegacion;
-import repositorios.RepoPersona;
+import api.repositorios.RepoDelegacion;
+import api.repositorios.RepoPersona;
 
 import javax.transaction.Transactional;
 
 @Service
 public class DelegacionService {
+    @Autowired
     private final RepoDelegacion repoDelegacion;
+    @Autowired
     private final RepoPersona repoPersonas;
 
-    @Autowired
     public DelegacionService(RepoDelegacion delegationRepository, RepoPersona personRepository) {
         this.repoDelegacion = delegationRepository;
         this.repoPersonas = personRepository;
@@ -23,7 +24,7 @@ public class DelegacionService {
 
     public Delegacion getDelegacionByDelegacion_id(Long idDelegation) {
         this.validarIdDelegacion(idDelegation);
-        return repoDelegacion.findDelegacionByDelegacion_id(idDelegation);
+        return repoDelegacion.findByDelegacionId(idDelegation);
     }
 
     @Transactional
@@ -48,7 +49,7 @@ public class DelegacionService {
     }
 
     public void delegationAuthorizationRevoke(Long idDelegacion) {
-        repoDelegacion.deleteByDelegacion_id(idDelegacion);
+        repoDelegacion.deleteByDelegacionId(idDelegacion);
     }
 
     private void validarIdDelegacion(Long id) {

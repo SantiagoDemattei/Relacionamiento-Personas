@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 17-10-2022 a las 22:24:44
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 28-10-2022 a las 21:40:57
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.5
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tp-personas`
 --
-CREATE DATABASE IF NOT EXISTS `tp-personas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `tp-personas`;
+
 -- --------------------------------------------------------
 
 --
@@ -45,11 +44,11 @@ CREATE TABLE `persona` (
   `persona_dni` int(11) NOT NULL,
   `persona_nombre` varchar(50) NOT NULL,
   `persona_apellido` varchar(50) NOT NULL,
-  `persona_fecha_nacimiento` date NOT NULL,
-  `persona_ciudad` varchar(50) NOT NULL,
-  `persona_localidad` varchar(50) NOT NULL,
-  `persona_foto` longblob NOT NULL,
-  `persona_id_usuario` int(11) DEFAULT NULL
+  `persona_fecha_nacimiento` date DEFAULT NULL,
+  `persona_ciudad` varchar(50) DEFAULT NULL,
+  `persona_localidad` varchar(50) DEFAULT NULL,
+  `persona_foto` longblob DEFAULT NULL,
+  `persona_id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,7 +61,7 @@ CREATE TABLE `usuario` (
   `usuario_id` int(11) NOT NULL,
   `usuario_nombre` varchar(50) NOT NULL,
   `usuario_password` varchar(50) NOT NULL,
-  `usuario_is_admin` tinyint(1) NOT NULL
+  `usuario_is_admin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -110,7 +109,7 @@ ALTER TABLE `persona`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

@@ -1,13 +1,13 @@
-package services;
+package api.services;
 
+import api.dominio.Persona;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dominio.Persona;
-import dominio.Usuario;
+import api.dominio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositorios.RepoPersona;
-import repositorios.RepoUsuario;
+import api.repositorios.RepoPersona;
+import api.repositorios.RepoUsuario;
 
 import javax.transaction.Transactional;
 import java.io.File;
@@ -18,10 +18,11 @@ import java.util.Objects;
 @Service
 @Transactional
 public class UsuarioService {
+    @Autowired
     private final RepoUsuario repoUsuarios;
+    @Autowired
     private final RepoPersona repoPersonas;
 
-    @Autowired
     public UsuarioService(RepoUsuario repoUsuario, RepoPersona repoPersona) {
         this.repoUsuarios = repoUsuario;
         this.repoPersonas = repoPersona;
@@ -29,30 +30,20 @@ public class UsuarioService {
 
     public Usuario obtenerUsuario(Long uId) {
         this.validarIdUsuario(uId);
-        return repoUsuarios.findUsuarioByUsuario_id(uId);
+        return repoUsuarios.findUsuarioByUsuarioId(uId);
     }
 
     public void registrar(Persona p) throws IOException {
         if(this.validarRegistro(p)) {
-            this.agregarUsuario(p);
-            this.agregarPersona(p);
+            this.agregarPersona(p); //Solo con agregar persona ya se va a estar insertando el usuario en la BD
+        } else {
+            System.out.println("No se pudo registrar el usuario");
         }
     }
 
-    private void agregarUsuario(Persona p) {
-        Usuario u = new Usuario(p.getNombre().charAt(0) + "." + p.getApellido(), p.getApellido());
-        u.setUsuario_id(repoUsuarios.count() + 1);
-
-        repoUsuarios.save(u);
-    }
-
     private void agregarPersona(Persona p) {
-        Persona person = new Persona(p.getDni(), p.getNombre(), p.getApellido());
-
-        person.setId(repoPersonas.count() + 1);
-        person.setUsuario(repoUsuarios.getById(repoUsuarios.count()));
-
-        repoPersonas.save(person);
+        p.setId(repoPersonas.count() + 1);
+        repoPersonas.save(p);
     }
 
     public Boolean logear(Usuario u) {
@@ -75,7 +66,7 @@ public class UsuarioService {
         List<Persona> personas = this.getPersonsFromJSON();
 
         Boolean esPersonaAutorizada = personas.stream().anyMatch(p -> Objects.equals(p.getDni(), per.getDni()) && Objects.equals(p.getNombre(), per.getNombre()) && Objects.equals(p.getApellido(), per.getApellido())); //si la persona esta en la lista (en el json)
-        Boolean yaRegistrada = repoUsuarios.existsUsuarioByNombre(per.getNombre().charAt(0) + per.getApellido()); //si la persona ya esta registrada (guardamos los usuarios con la primera letra del nombre y el apellido tipo dingratta)
+        Boolean yaRegistrada = repoUsuarios.existsUsuarioByNombre(per.getUsuario().getNombre()); //si la persona ya esta registrada (guardamos los usuarios con la primera letra del nombre y el apellido tipo dingratta)
 
         return esPersonaAutorizada && !yaRegistrada;
     }

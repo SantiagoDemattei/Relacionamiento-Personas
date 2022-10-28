@@ -1,21 +1,21 @@
-package controllers;
+package api.controllers;
 
-import dominio.Delegacion;
-import dominio.Persona;
+import api.dominio.Delegacion;
+import api.dominio.Persona;
+import api.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import services.AdminService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "administrador")
 public class AdminController {
+    @Autowired
     private final AdminService adminService;
 
-    @Autowired
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }

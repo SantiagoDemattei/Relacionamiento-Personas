@@ -1,4 +1,4 @@
-package dominio;
+package api.dominio;
 
 import javax.persistence.*;
 
@@ -8,7 +8,7 @@ public class Delegacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delegacion_id")
-    private Integer delegacion_id;
+    private Integer delegacionId;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "delegacion_delegado")
@@ -18,6 +18,7 @@ public class Delegacion {
     @JoinColumn(name = "delegacion_delegador")
     private Persona delegador;
 
+    @Transient
     @Enumerated(EnumType.STRING)
     private EstadoDelegacion estado;
 
@@ -36,11 +37,11 @@ public class Delegacion {
     }
 
     public Integer getDelegacion_id() {
-        return delegacion_id;
+        return delegacionId;
     }
 
     public void setDelegacion_id(Integer delegacion_id) {
-        this.delegacion_id = delegacion_id;
+        this.delegacionId = delegacion_id;
     }
 
     public Persona getDelegado() {

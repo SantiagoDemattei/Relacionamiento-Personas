@@ -1,11 +1,10 @@
-package controllers;
+package api.controllers;
 
-import dominio.Persona;
-import dominio.Usuario;
+import api.dominio.Persona;
+import api.services.UsuarioService;
+import api.dominio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import services.UsuarioService;
 
 import java.io.IOException;
 
@@ -13,9 +12,9 @@ import java.io.IOException;
 @CrossOrigin
 public class UsuarioController {
 
+    @Autowired
     private final UsuarioService uService;
 
-    @Autowired
     public UsuarioController(UsuarioService uService) {
         this.uService = uService;
     }
@@ -30,7 +29,7 @@ public class UsuarioController {
         uService.registrar(persona);
     }
 
-    @PostMapping(path = "login")
+    @PostMapping(path = "/logeousuario")
     public Boolean logearUsuario(@RequestBody Usuario user) {
         return uService.logear(user);
     }

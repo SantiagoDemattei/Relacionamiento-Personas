@@ -1,12 +1,12 @@
-package repositorios;
+package api.repositorios;
 
-import dominio.Usuario;
+import api.dominio.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepoUsuario extends JpaRepository<Usuario, Long> {
-    Usuario findUsuarioByUsuario_id(Long idUser);
+    Usuario findUsuarioByUsuarioId(Long idUser);
     Usuario findUsuarioByNombre(String u);
 
     Boolean existsUsuarioByNombre(String u);

@@ -1,7 +1,8 @@
-package dominio;
+package api.dominio;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -46,16 +47,15 @@ public class Persona {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "delegador", cascade = CascadeType.ALL)
     private List<Delegacion> delegacionesParaAutorizarAOtros;
 
-    @JsonIgnore
+    @JsonProperty("usuario")
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, orphanRemoval = true)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "persona_id_usuario")
     private Usuario usuario;
 
     public Persona(String dni, String nombre, String apellido) {
     }
 
     public Persona() {
-
     }
 
     private void aceptarDelegacion(Delegacion d) {

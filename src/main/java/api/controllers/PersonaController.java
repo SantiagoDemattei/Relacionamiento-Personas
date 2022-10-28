@@ -1,17 +1,17 @@
-package controllers;
+package api.controllers;
 
 
-import dominio.Persona;
+import api.dominio.Persona;
+import api.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.PersonaService;
 
 @RestController
 @RequestMapping(path = "person")
 public class PersonaController {
+    @Autowired
     private final PersonaService personaService;
 
-    @Autowired
     public PersonaController(PersonaService pService) {
         this.personaService = pService;
     }

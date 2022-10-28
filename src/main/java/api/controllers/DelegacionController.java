@@ -1,16 +1,16 @@
-package controllers;
+package api.controllers;
 
-import dominio.Delegacion;
+import api.dominio.Delegacion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.DelegacionService;
+import api.services.DelegacionService;
 
 @RestController
 @RequestMapping(path = "delegation")
 public class DelegacionController {
+    @Autowired
     private final DelegacionService delegacionService;
 
-    @Autowired
     public DelegacionController(DelegacionService delegationService) {
         this.delegacionService = delegationService;
     }

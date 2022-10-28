@@ -1,6 +1,6 @@
-package repositorios;
+package api.repositorios;
 
-import dominio.Persona;
+import api.dominio.Persona;
 //mport com.grupo2.relacionamientopersonas.domain.person.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface RepoPersona extends JpaRepository<Persona, Long> {
     Persona findPersonaById(Long pId);
     Persona findPersonaByDni(Long dni);
-
 }
