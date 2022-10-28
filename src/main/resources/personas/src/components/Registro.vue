@@ -95,6 +95,8 @@ hr {
 </style>
 
 <script>
+import registroService from '../services/registroService';
+
 export default{
 
   data() {
@@ -124,11 +126,17 @@ export default{
         console.log(this.email);
         console.log(this.password);
         console.log(this.password2);
-        // VALIDAR PRIMERO QUE LA PERSONA ESTE DENTRO DEL personas.json
-        window.alert('Registro exitoso, redireccionando a Inicio de Sesión');
-        this.$router.push('/login');
-        window.location.href = 'http://localhost:8080/InicioDeSesion';
 
+        registroService.registrar(this.nombre, this.apellido, this.dni, this.email, this.password)
+            .then(response => {
+              console.log(response);
+              window.alert('Registro exitoso, redireccionando a Inicio de Sesión');
+              // TODO: VALIDAR PRIMERO QUE LA PERSONA ESTE DENTRO DEL personas.json
+              this.$router.push('/InicioDeSesion');
+            })
+            .catch(error => {
+              console.log(error);
+            });
 
       }
     }

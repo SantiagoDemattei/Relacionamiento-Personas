@@ -10,6 +10,7 @@ import services.UsuarioService;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin
 public class UsuarioController {
 
     private final UsuarioService uService;
@@ -19,14 +20,12 @@ public class UsuarioController {
         this.uService = uService;
     }
 
-
-
     @GetMapping(path = "{userId}")
     public Usuario getUserById(@PathVariable("userId") Long uId) {
         return uService.obtenerUsuario(uId);
     }
 
-    @PostMapping(path = "/Registro")
+    @PostMapping(path = "/registrousuario")
     public void registrarUsuario(@RequestBody Persona persona) throws IOException {
         uService.registrar(persona);
     }

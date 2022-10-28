@@ -3,6 +3,8 @@ package dominio;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import repositorios.RepoPersona;
 import repositorios.RepoUsuario;
 import services.UsuarioService;
@@ -18,4 +20,5 @@ public class RelacionamientoPersonasApplication {
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(RelacionamientoPersonasApplication.class, args);
 	}
+
 }

@@ -10,7 +10,7 @@ public class Usuario {
     @Column(name = "usuario_id")
     private Long usuario_id;
     @Column(name = "usuario_nombre")
-    private String nombre;
+    private String nombre; // TODO: CAMBIAR A MAIL
     @Column(name = "usuario_password")
     private String password;
     @Column(name = "usuario_is_admin")

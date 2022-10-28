@@ -1,6 +1,6 @@
 <template>
   <h1>Inicio de Sesión</h1>
-  <form class="IniciodeSesión">
+  <form class="IniciodeSesión" @submit.prevent="handleLogin">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" v-model="email"><br>
     <br>
@@ -78,3 +78,35 @@ hr {
   text-align: center;
 }
 </style>
+
+<script>
+import loginService from '../services/loginService';
+
+export default{
+
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  methods: {
+
+    handleLogin() {
+      // TODO: VER SI HAY QUE HACER ALGUNA VALIDACION
+        console.log(this.email);
+        console.log(this.password);
+
+        loginService.logear(this.email, this.password)
+            .then(response => {
+              console.log(response);
+              window.alert('Inicio de Sesion exitoso, redireccionando al Menu Principal');
+              this.$router.push('/MenuPrincipal');
+            })
+            .catch(error => {
+              console.log(error);
+            });
+      }
+    }
+}
+</script>
