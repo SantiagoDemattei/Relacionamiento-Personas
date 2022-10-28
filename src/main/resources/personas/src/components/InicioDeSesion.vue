@@ -2,10 +2,10 @@
   <h1>Inicio de Sesión</h1>
   <form class="IniciodeSesión">
     <label for="email">Email</label>
-    <input type="email" name="email" id="email"><br>
+    <input type="email" name="email" id="email" v-model="email"><br>
     <br>
     <label for="password">Contraseña</label>
-    <input type="password" name="password" id="password"><br>
+    <input type="password" name="password" id="password" v-model="password"><br>
     <br>
     <input class="loginbtn" type="submit" value="Iniciar Sesión">
 
