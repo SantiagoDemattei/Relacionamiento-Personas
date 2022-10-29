@@ -19,7 +19,7 @@ public class PersonaController {
     public PersonaController(PersonaService pService) {
         this.personaService = pService;
     }
-    
+
     @PutMapping(path = "/{usuarioSesion}/actualizardatos")
     public void actualizarPersona(@PathVariable String usuarioSesion, @RequestBody Persona p) {
         personaService.actualizarPersona(usuarioSesion, p);
