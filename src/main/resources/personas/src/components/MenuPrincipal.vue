@@ -1,3 +1,4 @@
+<!--
 <template>
 <div class="bodyMenu">
 <nav class="navMenu">
@@ -144,4 +145,170 @@
   letter-spacing: 1px;
 }
 </style>
+-->
 
+<template>
+
+  <!-- Esto se tiene que hacer despues con libreria de vue (vueMeta)
+  <head>
+    <title>Mi impacto ambiental</title>
+  </head>
+  -->
+
+  <header class="headMenu">
+    <nav class="navMenu">
+      <div class="containerMenu">
+        <div class="logoMenu"><a href="#">RELACIONAMIENTO DE PERSONAS</a></div>
+        <ul class="ulMenu">
+          <li> <RouterLink to="/MenuPrincipal">Home</RouterLink> </li>
+          <li> <RouterLink to="/Reporte">Reportes</RouterLink> </li>
+          <li> <RouterLink to="/ActualizacionDeDatos">Actualizar datos</RouterLink></li>
+          <li> <RouterLink to="/MyAutorizaciones">Autorizaciones</RouterLink> </li>
+          <li> <RouterLink to="/Notificaciones">Notificaciones</RouterLink> </li>
+          <li> <RouterLink to="/">Cerrar sesión</RouterLink> </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <body class="bodyMenu">
+
+    <div class="heroMenu">
+      <div class="containerMenu">
+        <h1>B I E N V E N I D O</h1>
+      </div>
+    </div>
+
+  </body>
+
+  <footer class="footerMenu">
+    <section>
+      <p>MiImpactoAmbiental ®</p>
+    </section>
+  </footer>
+
+</template>
+
+<style>
+
+.navMenu{
+  background-color: #222222;
+  height: auto;
+  justify-content: center;
+  transition: all 0s ease-out;
+}
+
+.headMenu{
+  background-color: #222222;
+  height: auto;
+  justify-content: center;
+  transition: all 0s ease-out;
+  text-decoration: none;
+}
+
+.logoMenu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:  rgb(31, 200, 175);
+  font-size: 25px;
+}
+
+.navMenu .ulMenu{
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  font-size: 20px;
+  min-height: 70px;
+  background-color: #222222;
+}
+
+.navMenu li{
+  background-color: #222222;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  font-size: 20px;
+  min-height: 70px;
+}
+
+.navMenu li:hover{
+  background-color: #3b3b3b;
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  font-size: 25px;
+  min-height: 70px;
+}
+
+.navMenu a{
+  align-items: center;
+  color: #ffffff;
+  padding: 7px 15px;
+  text-decoration: none;
+  transition: all 0s ease-out;
+  font-weight: bold;
+  font-family: Tahoma;
+}
+
+.navMenu a:hover{
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.navMenu.active{
+  align-items: center;
+  background-color: #b3fff9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navMenu.active a{
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.navMenu.active .containerMenu{
+  align-items: center;
+  padding: 10px 0;
+}
+
+.navMenu a.current,
+.navMenu a:hover{
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.footerMenu {
+  /*background-color: blue;*/
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-family: Tahoma;
+  font-size: 17px;
+  background-color: #222222;
+}
+
+.bodyMenu {
+  background: linear-gradient(to right, rgb(223, 17, 134), rgb(31, 200, 175));
+  align-items: center;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+  margin-top: -20px;
+  position: relative;
+  text-align: center;
+  z-index: -2;
+  font-weight: bold;
+}
+
+</style>
