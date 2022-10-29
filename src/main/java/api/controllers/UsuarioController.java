@@ -4,6 +4,7 @@ import api.dominio.Persona;
 import api.services.UsuarioService;
 import api.dominio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -25,13 +26,21 @@ public class UsuarioController {
     }
 
     @PostMapping(path = "/registrousuario")
-    public void registrarUsuario(@RequestBody Persona persona) throws IOException {
-        uService.registrar(persona);
+    public ResponseEntity registrarUsuario(@RequestBody Persona persona) throws IOException {
+        if(uService.registrar(persona)){
+            return ResponseEntity.ok().body("Usuario registrado con exito");
+        } else {
+            return ResponseEntity.badRequest().body("Error al registrar usuario");
+        }
     }
 
     @PostMapping(path = "/logeousuario")
-    public Boolean logearUsuario(@RequestBody Usuario user) {
-        return uService.logear(user);
+    public ResponseEntity logearUsuario(@RequestBody Usuario user) {
+        if (uService.logear(user)) {
+            SesionManager sesionManager = SesionManager.get();
+            String idSesion = sesionManager.crearSesion("usuario", user);
+            return ResponseEntity.ok().body(idSesion);
+        }
+        return ResponseEntity.badRequest().body("Usuario o contraseña incorrectos");
     }
-
 }

@@ -125,13 +125,6 @@ export default{
           '' : window.alert('Las contraseñas no coinciden');
 
       if(!this.passwordError && !this.equalPasswordError) {
-        console.log(this.nombre);
-        console.log(this.apellido);
-        console.log(this.dni);
-        console.log(this.email);
-        console.log(this.password);
-        console.log(this.password2);
-
         registroService.registrar(this.nombre, this.apellido, this.dni, this.email, this.password)
             .then(response => {
               console.log(response);
@@ -140,6 +133,7 @@ export default{
             })
             .catch(error => {
               console.log(error);
+              window.alert('Error al registrar, usuario ya existente o usuario no autorizado');
             });
       }
     }

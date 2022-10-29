@@ -33,11 +33,12 @@ public class UsuarioService {
         return repoUsuarios.findUsuarioByUsuarioId(uId);
     }
 
-    public void registrar(Persona p) throws IOException {
+    public Boolean registrar(Persona p) throws IOException {
         if(this.validarRegistro(p)) {
             this.agregarPersona(p); //Solo con agregar persona ya se va a estar insertando el usuario en la BD
-        } else { // TODO: BORRAR ESTO (ESTABA SOLO PARA DEBUGGEAR)
-            System.out.println("No se pudo registrar el usuario");
+            return true; // ver si se puede arreglar esto, está asqueroso!!
+        } else {
+            return false;
         }
     }
 

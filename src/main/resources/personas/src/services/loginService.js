@@ -7,7 +7,7 @@ class LoginService {
         return axios.post(BASE_API_URL + "/logeousuario", {
             "nombre": mail,
             "password": password
-        });
+        })
     }
 }
 

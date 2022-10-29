@@ -22,12 +22,12 @@
     <div class="delegacionAutorizaciones">
       <div class="delegacion-texto">
         <p class="subtituloAutorizaciones">REALIZAR DELEGACIÓN</p>
-        <form class="formDelegacion">
+        <form class="formDelegacion" @submit.capture="handleDelegacion">
           <label for="email">Persona a autorizar</label>
-          <input type="email" name="email" id="email"><br>
+          <input type="email" name="email" id="email" v-model="nombrePersona"><br>
           <br>
           <label for="dni">DNI</label>
-          <input type="text" name="text" id="text"><br>
+          <input type="text" name="text" id="text" v-model="dniPersona"><br>
           <br>
           <input class="autorizarbtn" type="submit" value="Autorizar">
 
@@ -215,5 +215,29 @@ body {
 </style>
 
 <script>
+import delegacionService from '../services/delegacionService';
 
+export default{
+
+  data() {
+    return {
+      nombrePersona: '',
+      dniPersona: '',
+    }
+  },
+  methods: {
+
+    handleDelegacion() {
+      delegacionService.autorizar(this.nombrePersona, this.dniPersona)
+          .then(response => {
+            console.log(response);
+            window.alert('Delegación realizada');
+          })
+          .catch(error => {
+            console.log(error);
+            window.alert('Error al realizar la delegación');
+          });
+    }
+  }
+}
 </script>

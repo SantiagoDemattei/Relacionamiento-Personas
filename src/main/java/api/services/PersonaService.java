@@ -1,11 +1,19 @@
 package api.services;
 
+import api.controllers.SesionManager;
 import api.dominio.Persona;
+import api.dominio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 import api.repositorios.RepoPersona;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class PersonaService {
@@ -16,29 +24,18 @@ public class PersonaService {
         this.repoPersona = repoPersona;
     }
 
-    public Persona obtenerPersona(Long pId){
-        this.validarPersonaId(pId);
-
-        return repoPersona.findPersonaById(pId);
-    }
 
     @Transactional
-    public void actualizarPersona(Persona p) {
-        this.validarPersonaId(p.getId());
+    public void actualizarPersona(String sesionUsuario, Persona p) {
+        SesionManager sesionManager = SesionManager.get();
+        Map<String, Object> elementoHashMap = sesionManager.obtenerAtributos(sesionUsuario); // TODO: ESTA ROMPIENDO ACA (ENCUENTRA null)
+        Usuario usuario = (Usuario) elementoHashMap.get("usuario");
+        Persona personaActual = repoPersona.findPersonaByUsuario(usuario); // TODO: REVISAR ESTO
 
-        Persona person = this.obtenerPersona(p.getId());
-        person.setCiudad(p.getCiudad());
-        person.setLocalidad(p.getLocalidad());
-        person.setFechaNacimiento(p.getFechaNacimiento());
-        person.setFoto(p.getFoto());
-    }
-
-    private void validarPersonaId(Long id) {
-        if(id <= 0)
-            System.out.println("ID " + id + " invalido");
-
-        if(!repoPersona.existsById(id))
-            System.out.println("No existe una persona con ID " + id);
+        personaActual.setCiudad(p.getCiudad());
+        personaActual.setLocalidad(p.getLocalidad());
+        personaActual.setFechaNacimiento(p.getFechaNacimiento());
+        personaActual.setFoto(p.getFoto());
     }
 
 }

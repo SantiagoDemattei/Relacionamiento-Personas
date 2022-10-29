@@ -99,12 +99,14 @@ export default{
 
         loginService.logear(this.email, this.password)
             .then(response => {
-              console.log(response);
+              const token = response.data;
+              localStorage.setItem('token', token);
               window.alert('Inicio de Sesion exitoso, redireccionando al Menu Principal');
               this.$router.push('/MenuPrincipal');
             })
             .catch(error => {
               console.log(error);
+              window.alert('Error al iniciar sesion, verifique los datos ingresados');
             });
       }
     }

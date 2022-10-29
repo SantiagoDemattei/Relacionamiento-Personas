@@ -1,14 +1,18 @@
 package api.services;
 
+import api.controllers.SesionManager;
 import api.dominio.Delegacion;
 import api.dominio.EstadoDelegacion;
 import api.dominio.Persona;
+import api.dominio.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import api.repositorios.RepoDelegacion;
 import api.repositorios.RepoPersona;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class DelegacionService {
@@ -28,16 +32,20 @@ public class DelegacionService {
     }
 
     @Transactional
-    public void delegationAuthorization(Long dniDelegado, Long dniDelegador) {
-        Persona delegado = repoPersonas.findPersonaByDni(dniDelegado);
-        Persona delegador = repoPersonas.findPersonaByDni(dniDelegador);
+    public void realizarDelegacion(String sesionUsuario, String dniDelegado){
+        SesionManager sesionManager = SesionManager.get();
+        Map<String, Object> elementoHashMap = sesionManager.obtenerAtributos(sesionUsuario);
+        Usuario usuarioDelegador = (Usuario) elementoHashMap.get("usuario");
+        Persona personaDelegador = repoPersonas.findPersonaByUsuario(usuarioDelegador);
+        Persona personaDelegado = repoPersonas.findPersonaByDni(dniDelegado);
 
-        Delegacion delegacion = new Delegacion(delegado, delegador) ;
-        delegado.addDelegadoDelegacion(delegacion);
-        delegador.addDelegadorDelegacion(delegacion);
+        Delegacion delegacion = new Delegacion(personaDelegado, personaDelegador) ;
+        personaDelegado.addDelegadoDelegacion(delegacion);
+        personaDelegador.addDelegadorDelegacion(delegacion);
 
         repoDelegacion.save(delegacion);
     }
+
 
 
     @Transactional

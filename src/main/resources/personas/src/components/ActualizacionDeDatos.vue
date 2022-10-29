@@ -7,19 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 <body class="bg-light">
 <div class="container">
   <main>
-    <nav class="nav">
-      <div class="container">
-        <h1 class="logo"><a href="#">RELACIONAMIENTO DE PERSONAS</a></h1>
-        <ul>
-          <li> <RouterLink to="/MenuPrincipal">Home</RouterLink> </li>
-          <li> <RouterLink to="/Reporte">Reportes</RouterLink> </li>
-          <li> <RouterLink to="/ActualizacionDeDatos">Actualizar datos</RouterLink></li>
-          <li> <RouterLink to="/MyAutorizaciones">Autorizaciones</RouterLink> </li>
-          <li> <RouterLink to="/Notificaciones">Notificaciones</RouterLink> </li>
-          <li> <RouterLink to="/">Cerrar sesión</RouterLink> </li>
-        </ul>
-      </div>
-    </nav>
+    <!-- TODO: INSERTAR LA NAVBAR -->
 
     <div class="py-5 text-center">
       <h2>Actualización de datos</h2>
@@ -31,27 +19,27 @@ import 'bootstrap/dist/css/bootstrap.css';
       <div class="row g-4">
         <div class="col-md-7 col-lg-auto">
           <h4 class="mb-3">Información personal</h4>
-          <form class="needs-validation" novalidate>
+          <form @submit.prevent="handleActualizacion">
             <div class="row g-3">
 
               <div class="col-12">
                 <label for="address" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="address" placeholder="" required>
+                <input type="date" class="form-control" id="address" placeholder="" required v-model="nacimiento">
               </div>
 
               <div class="col-md-6 my-2">
                 <label for="country" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" id="country" required>
+                <input type="text" class="form-control" id="country" required v-model="ciudad">
               </div>
 
               <div class="col-md-6 my-2">
                 <label for="state" class="form-label">Localidad</label>
-                <input type="text" class="form-control" id="state" required>
+                <input type="text" class="form-control" id="state" required v-model="localidad">
               </div>
 
               <div class="col-12">
                 <label for="formFile" class="form-label">Foto</label>
-                <input class="form-control-file" type="file" id="formFile">
+                <input class="form-control-file" type="file" id="formFile" @change="changeFiles" ref="miarchivo">
               </div>
             </div>
             <br>
@@ -215,5 +203,42 @@ body {
 </style>
 
 <script>
+import actualizarDatosService from '../services/actualizarDatosService';
 
+export default{
+
+  data() {
+    return {
+      nacimiento : '',
+      ciudad : '',
+      localidad : '',
+      foto : ''
+    }
+  },
+  methods: {
+     changeFiles(){
+      let file = this.$refs.miarchivo.files[0];//trae el archivo que esta en miarchivo
+      if(file.type == 'image/jpeg' || file.type == 'image/png'){
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.foto = reader.result;
+        }
+      }},
+
+      handleActualizacion() {
+        console.log(this.nacimiento);
+        console.log(this.ciudad);
+        console.log(this.localidad);
+        console.log(this.foto);
+        actualizarDatosService.actualizarDatos(this.nacimiento, this.ciudad, this.localidad, this.foto)
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      }
+    }
+  }
 </script>
