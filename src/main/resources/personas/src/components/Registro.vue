@@ -136,7 +136,6 @@ export default{
             .then(response => {
               console.log(response);
               window.alert('Registro exitoso, redireccionando a Inicio de Sesión');
-              // TODO: VALIDAR PRIMERO QUE LA PERSONA ESTE DENTRO DEL personas.json
               this.$router.push('/InicioDeSesion');
             })
             .catch(error => {

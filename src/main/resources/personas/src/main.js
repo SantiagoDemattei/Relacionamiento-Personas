@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
-import Vuelidate from 'vuelidate'
+//import Vuelidate from 'vuelidate'
 
 const app = createApp(App)
 app.use(router)
