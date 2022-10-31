@@ -16,7 +16,7 @@
 
   <section class="mainReporte">
     <div class="contenedor-baseReporte">
-      <h3 class="subtituloReporte">REPORTE PERSONAS</h3>
+      <h3 class="subtituloReporte">REPORTE PERSONAS</h3><br>
 
       <div class="tablaReporte">
         <table>
@@ -45,10 +45,10 @@
             <td>mm/dd/aaaa</td>
           </tr>
         </table>
-      </div>
+      </div><br>
 
 
-      <h3 class="subtituloReporte">REPORTE DELEGACIONES</h3>
+      <h3 class="subtituloReporte">REPORTE DELEGACIONES</h3><br>
 
       <div class="tablaReporte">
         <table>
@@ -64,12 +64,7 @@
             <td>{{ del.delegador.nombre + " " + del.delegador.apellido + " " + del.delegador.dni}}</td>
             <td>{{ del.estado }}</td>
           </tr>
-          <tr>
-            <td>0000002</td>
-            <td>Persona 3</td>
-            <td>Persona 4</td>
-            <td>Pendiente</td>
-          </tr>
+
         </table>
       </div>
 
@@ -151,6 +146,13 @@ table {
   width: 100%;
   font-size: 20px;
 }
+subtituloReporte{
+  font-size: 30px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
 
 .main {
   margin-top: 12rem;

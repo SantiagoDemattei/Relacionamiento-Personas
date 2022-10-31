@@ -66,5 +66,11 @@ public class DelegacionController {
         return ResponseEntity.ok().body("Delegacion realizada");
     }
 
+    @GetMapping(path = "/{usuarioSesion}/reportedelegaciones")
+    public List<Delegacion> reporteDelegaciones(@PathVariable String usuarioSesion) {
+        return delegacionService.reporteDelegaciones(usuarioSesion);
+    }
+
+
 
 }
