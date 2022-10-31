@@ -151,7 +151,6 @@ export default {
   methods: {
     refreshNotificaciones() {
         notificacionesService.obtenerNotificaciones().then(response => {
-          console.log(response.data); // TODO: BORRAR DESPUES
           this.notificaciones = response.data;
         });
      },

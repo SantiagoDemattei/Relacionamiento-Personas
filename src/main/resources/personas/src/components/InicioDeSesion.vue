@@ -93,8 +93,6 @@ export default{
   methods: {
 
     handleLogin() {
-      // TODO: VER SI HAY QUE HACER ALGUNA VALIDACION
-
         loginService.logear(this.email, this.password)
             .then(response => {
               const token = response.data;

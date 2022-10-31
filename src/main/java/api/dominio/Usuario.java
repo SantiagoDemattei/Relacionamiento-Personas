@@ -10,17 +10,16 @@ public class Usuario {
     @Column(name = "usuario_id")
     private Long usuarioId;
     @Column(name = "usuario_nombre")
-    private String nombre; // TODO: CAMBIAR A MAIL
+    private String nombre;
     @Column(name = "usuario_password")
     private String password;
     @Column(name = "usuario_is_admin")
     private boolean isAdmin;
-    
+
 
     public Usuario(String nombre, String password) {
         this.nombre = nombre;
         this.password = password;
-        this.isAdmin = false;
     }
 
     public Usuario() {

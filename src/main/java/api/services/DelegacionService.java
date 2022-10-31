@@ -83,10 +83,10 @@ public class DelegacionService {
         SesionManager sesionManager = SesionManager.get();
         Map<String, Object> elementoHashMap = sesionManager.obtenerAtributos(usuarioSesion);
         Usuario usuario = (Usuario) elementoHashMap.get("usuario");
-        System.out.println(usuario.getAdmin());
-        if(usuario.getAdmin()){
+        Usuario usuarioBD = repoPersonas.findPersonaByUsuario_Nombre(usuario.getNombre()).getUsuario();
+        if(usuarioBD.getAdmin()){
             return repoDelegacion.findAll();
         }
-        return new ArrayList<Delegacion>(); // TODO: REVISAR ACA
+        return new ArrayList<Delegacion>();
     }
 }

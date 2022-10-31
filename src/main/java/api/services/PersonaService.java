@@ -43,10 +43,11 @@ public class PersonaService {
         SesionManager sesionManager = SesionManager.get();
         Map<String, Object> elementoHashMap = sesionManager.obtenerAtributos(usuarioSesion);
         Usuario usuario = (Usuario) elementoHashMap.get("usuario");
-        if(usuario.getAdmin()){
+        Usuario usuarioBD = repoPersona.findPersonaByUsuario_Nombre(usuario.getNombre()).getUsuario();
+        if(usuarioBD.getAdmin()){
             return repoPersona.findAll();
         }
-        return new ArrayList<Persona>(); // TODO: REVISAR ACA
+        return new ArrayList<Persona>();
     }
 
 }
