@@ -85,6 +85,10 @@
   font-size: 20px;
 }
 
+.tablaReporte tr {
+  border: 1px solid black;
+}
+
 .subtituloReporte{
   font-size: 30px;
   font-weight: bold;
@@ -100,7 +104,7 @@
   border-radius: 10px;
   padding: 10px;
   background-color: #ffffff;
-
+  text-align: center;
 }
 
 .tablaReporteDel {
