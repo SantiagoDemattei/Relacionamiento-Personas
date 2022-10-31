@@ -110,7 +110,8 @@
   border: 1px solid #000000;
   border-radius: 10px;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: #ffffff ;
+  text-align: center;
 }
 
 .main {
