@@ -22,8 +22,8 @@
     <div class="contenedor-baseReporte">
       <h3 class="subtituloReporte">REPORTE PERSONAS</h3><br>
 
-      <div class="tablaReporte">
-        <table>
+      <div class="tablaReportePer">
+        <table class="tablaReporte">
           <tr>
             <th>DNI</th>
             <th>NOMBRE</th>
@@ -46,8 +46,8 @@
 
       <h3 class="subtituloReporte">REPORTE DELEGACIONES</h3><br>
 
-      <div class="tablaReporte">
-        <table>
+      <div class="tablaReporteDel">
+        <table class="tablaReporte">
           <tr>
             <th>DELEGACIÓN</th>
             <th>DELEGADO</th>
@@ -78,19 +78,40 @@
   align-items: center;
 }
 
-table {
+.tablaReporte {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-collapse: collapse;
   width: 100%;
   font-size: 20px;
 }
-subtituloReporte{
+
+.subtituloReporte{
   font-size: 30px;
   font-weight: bold;
   color: #000000;
   text-align: center;
 }
 
+.tablaReportePer {
+  /*tabla personas*/
+  margin: auto;
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+
+}
+
+.tablaReporteDel {
+  /*tabla delegaciones*/
+  margin: auto;
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+}
 
 .main {
   margin-top: 12rem;
