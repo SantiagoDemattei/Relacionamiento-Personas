@@ -43,4 +43,11 @@ public class UsuarioController {
         }
         return ResponseEntity.badRequest().body("Usuario o contraseña incorrectos");
     }
+
+    @PostMapping(path = "/{idSesion}/logout")
+    public ResponseEntity logout(@PathVariable String idSesion) {
+        SesionManager sesionManager = SesionManager.get();
+        sesionManager.eliminar(idSesion);
+        return ResponseEntity.ok().body("Sesion eliminada");
+    }
 }

@@ -25,6 +25,11 @@ public class PersonaController {
         personaService.actualizarPersona(usuarioSesion, p);
     }
 
+    @GetMapping(path = "/{usuarioSesion}/reportepersonas")
+    public List<Persona> reportePersonas(@PathVariable String usuarioSesion) {
+        return personaService.reportePersonas(usuarioSesion);
+    }
+
 
 }
 

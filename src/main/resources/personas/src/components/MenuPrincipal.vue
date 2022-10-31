@@ -165,7 +165,7 @@
           <li> <RouterLink to="/ActualizacionDeDatos">Actualizar datos</RouterLink></li>
           <li> <RouterLink to="/MyAutorizaciones">Autorizaciones</RouterLink> </li>
           <li> <RouterLink to="/Notificaciones">Notificaciones</RouterLink> </li>
-          <li> <RouterLink to="/">Cerrar sesión</RouterLink> </li>
+          <li> <RouterLink to="/" @click="cerrarSesion">Cerrar sesión</RouterLink> </li>
         </ul>
       </div>
     </nav>
@@ -312,3 +312,20 @@
 }
 
 </style>
+
+<script>
+import cerrarSesionService from '../services/cerrarSesionService';
+
+export default {
+  name: 'MenuPrincipal',
+  methods: {
+    cerrarSesion: function () {
+      cerrarSesionService.cerrarSesion(localStorage.getItem('token'))
+      localStorage.removeItem('token');
+      window.alert('Sesión cerrada');
+      this.$router.push('/')
+    }
+  }
+}
+
+</script>

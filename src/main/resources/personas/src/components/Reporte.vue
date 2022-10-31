@@ -28,13 +28,13 @@
             <th>CIUDAD</th>
             <th>FECHA DE NACIMIENTO</th>
           </tr>
-          <tr>
-            <td>0000001</td>
-            <td>Nombre 1</td>
-            <td>Apellido 1</td>
-            <td>C.A.B.A.</td>
-            <td>Loca1</td>
-            <td>mm/dd/aaaa</td>
+          <tr v-for="per in personas" v-bind:key = "per.id">
+            <td>{{per.dni}}</td>
+            <td>{{per.nombre}}</td>
+            <td>{{per.apellido}}</td>
+            <td>{{per.localidad}}</td>
+            <td>{{per.ciudad}}</td>
+            <td>{{per.fechaNacimiento}}</td>
           </tr>
           <tr>
             <td>0000002</td>
@@ -58,11 +58,11 @@
             <th>PERMITIDO</th>
             <th>ESTADO</th>
           </tr>
-          <tr>
-            <td>0000001</td>
-            <td>Persona 1</td>
-            <td>Persona 2</td>
-            <td>Pendiente</td>
+          <tr v-for="del in delegaciones" v-bind:key = "del.id">
+            <td>{{ del.id }}</td>
+            <td>{{ del.delegado.nombre + " " + del.delegado.apellido + " " + del.delegado.dni}}</td>
+            <td>{{ del.delegador.nombre + " " + del.delegador.apellido + " " + del.delegador.dni}}</td>
+            <td>{{ del.estado }}</td>
           </tr>
           <tr>
             <td>0000002</td>
@@ -173,5 +173,42 @@ body {
 </style>
 
 <script>
+import cerrarSesionService from '../services/cerrarSesionService';
+import reportesService from "../services/reportesService";
 
+export default {
+  name: 'Reporte',
+  data() {
+    return {
+      personas: [],
+      delegaciones: [],
+    }
+  },
+  methods: {
+    refreshPersonas(){
+      reportesService.obtenerPersonas().then((response) => {
+        console.log("PERSONAS OBTENIDAS: ")
+        console.log(response.data);
+        this.personas = response.data;
+      });
+    },
+    refreshDelegaciones(){
+      reportesService.obtenerDelegaciones().then((response) => {
+        console.log("DELEGACIONES OBTENIDAS: ")
+        console.log(response.data);
+        this.delegaciones = response.data;
+      });
+    },
+    cerrarSesion: function () {
+      cerrarSesionService.cerrarSesion(localStorage.getItem('token'))
+      localStorage.removeItem('token');
+      window.alert('Sesión cerrada');
+      this.$router.push('/')
+    }
+  },
+  mounted: function mounted() {
+    this.refreshPersonas();
+    this.refreshDelegaciones();
+  }
+}
 </script>

@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface RepoPersona extends JpaRepository<Persona, Long> {
     Persona findPersonaById(Long pId);
     Persona findPersonaByDni(String dni);
-    Persona findPersonaByUsuario(Usuario usuario);
+    Persona findPersonaByUsuario_Nombre(String mail);
 }

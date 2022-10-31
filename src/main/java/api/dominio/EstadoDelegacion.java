@@ -10,8 +10,6 @@ public enum EstadoDelegacion {
             case 0:
                 return ESPERA;
             case 1:
-                return RECHAZADA;
-            case 2:
                 return ACEPTADA;
         }
         return null;

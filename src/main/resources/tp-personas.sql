@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2022 a las 21:40:57
+-- Tiempo de generación: 31-10-2022 a las 00:51:42
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `delegacion` (
   `delegacion_id` int(11) NOT NULL,
   `delegacion_delegado` int(11) DEFAULT NULL,
-  `delegacion_delegador` int(11) DEFAULT NULL
+  `delegacion_delegador` int(11) DEFAULT NULL,
+  `delegacion_estado` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -51,6 +52,14 @@ CREATE TABLE `persona` (
   `persona_id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`persona_id`, `persona_dni`, `persona_nombre`, `persona_apellido`, `persona_fecha_nacimiento`, `persona_ciudad`, `persona_localidad`, `persona_foto`, `persona_id_usuario`) VALUES
+(10, 43990925, 'Santiago', 'Demattei', NULL, NULL, NULL, NULL, 19),
+(11, 1, 'Graciela', 'Valls', NULL, NULL, NULL, NULL, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -63,6 +72,14 @@ CREATE TABLE `usuario` (
   `usuario_password` varchar(50) NOT NULL,
   `usuario_is_admin` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usuario_id`, `usuario_nombre`, `usuario_password`, `usuario_is_admin`) VALUES
+(19, 'santijav@hotmail.com.ar', 'hola1234', 1),
+(20, 'hola@hola.com', 'hola1234', 0);
 
 --
 -- Índices para tablas volcadas
@@ -97,19 +114,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `delegacion`
 --
 ALTER TABLE `delegacion`
-  MODIFY `delegacion_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `delegacion_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `persona_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `usuario_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas

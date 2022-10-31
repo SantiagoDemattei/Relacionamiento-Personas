@@ -1,22 +1,6 @@
 <template>
   <body class="bodyAutorizaciones">
 
-  <header>
-    <nav class="navAutorizaciones">
-      <div class="containerAutorizaciones">
-        <h1 class="logo"><a href="#">RELACIONAMIENTO DE PERSONAS</a></h1>
-        <ul>
-          <li><a href="menuprincipal.html" class="current">Home</a></li>
-          <li><a href="reporte.html">Reportes</a></li>
-          <li><a href="actualizaciondedatos.html" class="actu">Actualizar datos</a></li>
-          <li><a href="autorizaciones.html">Autorizaciones</a></li>
-          <li><a href="notificaciones.html">Notificaciones</a></li>
-          <li><a href="index.html">Cerrar Sesion</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
   <section class="mainAutorizaciones">
 
     <div class="delegacionAutorizaciones">
@@ -216,6 +200,7 @@ body {
 
 <script>
 import delegacionService from '../services/delegacionService';
+import cerrarSesionService from "@/services/cerrarSesionService";
 
 export default{
 
@@ -237,6 +222,12 @@ export default{
             console.log(error);
             window.alert('Error al realizar la delegación');
           });
+    },
+    cerrarSesion: function () {
+      cerrarSesionService.cerrarSesion(localStorage.getItem('token'))
+      localStorage.removeItem('token');
+      window.alert('Sesión cerrada');
+      this.$router.push('/')
     }
   }
 }

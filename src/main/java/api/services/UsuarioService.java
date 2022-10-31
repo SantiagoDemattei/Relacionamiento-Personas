@@ -43,6 +43,7 @@ public class UsuarioService {
     }
 
     private void agregarPersona(Persona p) {
+        p.getUsuario().setAdmin(false);
         p.setId(repoPersonas.count() + 1);
         repoPersonas.save(p);
     }

@@ -94,8 +94,6 @@ export default{
 
     handleLogin() {
       // TODO: VER SI HAY QUE HACER ALGUNA VALIDACION
-        console.log(this.email);
-        console.log(this.password);
 
         loginService.logear(this.email, this.password)
             .then(response => {

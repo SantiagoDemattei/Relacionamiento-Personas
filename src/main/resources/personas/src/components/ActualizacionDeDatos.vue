@@ -205,27 +205,58 @@ body {
 <script>
 import actualizarDatosService from '../services/actualizarDatosService';
 
-export default{
+export default {
 
   data() {
     return {
-      nacimiento : '',
-      ciudad : '',
-      localidad : '',
-      foto : ''
+      nacimiento: '',
+      ciudad: '',
+      localidad: '',
+      foto: ''
     }
   },
   methods: {
-     changeFiles(){
+    changeFiles() {
       let file = this.$refs.miarchivo.files[0];//trae el archivo que esta en miarchivo
-      if(file.type == 'image/jpeg' || file.type == 'image/png'){
+      if (file.type == 'image/jpeg' || file.type == 'image/png') {
+        console.log("la imagen cargada pesa: " + file.size + " bytes");
+        // -------------------------------
+        // ACA COMPRIMO LA IMAGEN
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-          this.foto = reader.result;
+          let img = new Image();
+          img.src = reader.result;
+          img.onload = () => {
+            let elem = document.createElement('canvas');
+            elem.width = 300;
+            elem.height = 300;
+            let ctx = elem.getContext('2d');
+            ctx.drawImage(img, 0, 0, 300, 300);
+            ctx.canvas.toBlob((blob) => {
+              let file = new File([blob], 'foto.jpg', {
+                type: 'image/jpeg',
+                lastModified: Date.now()
+              });
+              this.foto = file;
+              console.log("la imagen cargada pesa: " + file.size + " bytes");
+              // -------------------------------
+              // ACA CONVIERTO LA IMAGE A BASE 64
+              let reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onloadend = () => {
+                let base64data = reader.result;
+                console.log(base64data);
+                this.foto = base64data;
+              }
+            }, 'image/jpeg', 1);
+          },
+              reader.onerror = error => console.log(error);
         }
-      }},
-
+      } else {
+        alert("El archivo no es una imagen");
+      }
+    },
       handleActualizacion() {
         console.log(this.nacimiento);
         console.log(this.ciudad);

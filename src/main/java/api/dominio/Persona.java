@@ -23,29 +23,17 @@ public class Persona {
     @Column(name = "persona_dni")
     private String dni;
 
-    @JsonIgnore
     @Column(name = "persona_fechaNacimiento")
     private  String fechaNacimiento;
 
-    @JsonIgnore
     @Column(name = "persona_ciudad")
     private String ciudad;
 
-    @JsonIgnore
     @Column(name = "persona_localidad")
     private String localidad;
 
-    @JsonIgnore
     @Column(name = "persona_foto")
-    private String foto; //Base64 code REVISAR
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "delegado", cascade = CascadeType.ALL)
-    private List<Delegacion> delegacionesAceptadasPropias;
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "delegador", cascade = CascadeType.ALL)
-    private List<Delegacion> delegacionesParaAutorizarAOtros;
+    private String foto;
 
     @JsonProperty("usuario")
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}, orphanRemoval = true)
@@ -62,17 +50,6 @@ public class Persona {
         d.setEstado(EstadoDelegacion.ACEPTADA);
     }
 
-    private void rechazarDelegacion(Delegacion d) {
-        d.setEstado(EstadoDelegacion.RECHAZADA);
-    }
-
-    public void addDelegadoDelegacion(Delegacion delegacion){
-          delegacionesParaAutorizarAOtros.add(delegacion);
-    }
-
-    public void addDelegadorDelegacion(Delegacion delegacion){
-        delegacionesAceptadasPropias.add(delegacion);
-    }
 
     //Setters y Getters
     public Long getId() {
@@ -145,22 +122,6 @@ public class Persona {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public List<Delegacion> getDelegacionesAceptadasPropias() {
-        return delegacionesAceptadasPropias;
-    }
-
-    public void setDelegacionesAceptadasPropias(List<Delegacion> delegacionesAceptadasPropias) {
-        this.delegacionesAceptadasPropias = delegacionesAceptadasPropias;
-    }
-
-    public List<Delegacion> getDelegacionesParaAutorizarAOtros() {
-        return delegacionesParaAutorizarAOtros;
-    }
-
-    public void setDelegacionesParaAutorizarAOtros(List<Delegacion> delegacionesParaAutorizarAOtros) {
-        this.delegacionesParaAutorizarAOtros = delegacionesParaAutorizarAOtros;
     }
 
 

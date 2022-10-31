@@ -8,9 +8,9 @@ public class Delegacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delegacion_id")
-    private Integer delegacionId;
+    private Long delegacionId;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "delegacion_delegado")
     private Persona delegado;
 
@@ -18,7 +18,7 @@ public class Delegacion {
     @JoinColumn(name = "delegacion_delegador")
     private Persona delegador;
 
-    @Transient
+    @Column(name = "delegacion_estado")
     @Enumerated(EnumType.STRING)
     private EstadoDelegacion estado;
 
@@ -36,11 +36,11 @@ public class Delegacion {
         this.estado = estado;
     }
 
-    public Integer getDelegacion_id() {
+    public Long getDelegacion_id() {
         return delegacionId;
     }
 
-    public void setDelegacion_id(Integer delegacion_id) {
+    public void setDelegacion_id(Long delegacion_id) {
         this.delegacionId = delegacion_id;
     }
 
