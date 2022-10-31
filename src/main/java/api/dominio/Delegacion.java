@@ -14,7 +14,7 @@ public class Delegacion {
     @JoinColumn(name = "delegacion_delegado")
     private Persona delegado;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "delegacion_delegador")
     private Persona delegador;
 

@@ -14,8 +14,8 @@ public class Usuario {
     @Column(name = "usuario_password")
     private String password;
     @Column(name = "usuario_is_admin")
-    private Boolean isAdmin;
-
+    private boolean isAdmin;
+    
 
     public Usuario(String nombre, String password) {
         this.nombre = nombre;

@@ -4,53 +4,69 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 <template>
-<body class="bg-light">
-<div class="container">
-  <main>
-    <!-- TODO: INSERTAR LA NAVBAR -->
 
-    <div class="py-5 text-center">
-      <h2>Actualización de datos</h2>
-      <p class="lead">Actualice los datos que desee y presione el boton "Actualizar"</p>
-    </div>
+  <header class="headMenu">
+    <nav class="navMenu">
+      <div class="containerMenu">
+        <div class="logoMenu"><a href="#">RELACIONAMIENTO DE PERSONAS</a></div>
+        <ul class="ulMenu">
+          <li> <RouterLink to="/MenuPrincipal">Home</RouterLink> </li>
+          <li> <RouterLink to="/Reporte">Reportes</RouterLink> </li>
+          <li> <RouterLink to="/ActualizacionDeDatos">Actualizar datos</RouterLink></li>
+          <li> <RouterLink to="/MyAutorizaciones">Autorizaciones</RouterLink> </li>
+          <li> <RouterLink to="/Notificaciones">Notificaciones</RouterLink> </li>
+          <li> <RouterLink to="/" @click="cerrarSesion">Cerrar sesión</RouterLink> </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+    <body class="bg-light">
+    <div class="container">
+      <main>
+
+      <div class="py-5 text-center">
+        <h2>Actualización de datos</h2>
+        <p class="lead">Actualice los datos que desee y presione el boton "Actualizar"</p>
+      </div>
 
 
-    <div class="contenedor">
-      <div class="row g-4">
-        <div class="col-md-7 col-lg-auto">
-          <h4 class="mb-3">Información personal</h4>
-          <form @submit.prevent="handleActualizacion">
-            <div class="row g-3">
+      <div class="contenedor">
+        <div class="row g-4">
+          <div class="col-md-7 col-lg-auto">
+            <h4 class="mb-3">Información personal</h4>
+            <form @submit.prevent="handleActualizacion">
+              <div class="row g-3">
 
-              <div class="col-12">
-                <label for="address" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" id="address" placeholder="" required v-model="nacimiento">
+                <div class="col-12">
+                  <label for="address" class="form-label">Fecha de Nacimiento</label>
+                  <input type="date" class="form-control" id="address" placeholder="" required v-model="nacimiento">
+                </div>
+
+                <div class="col-md-6 my-2">
+                  <label for="country" class="form-label">Ciudad</label>
+                  <input type="text" class="form-control" id="country" required v-model="ciudad">
+                </div>
+
+                <div class="col-md-6 my-2">
+                  <label for="state" class="form-label">Localidad</label>
+                  <input type="text" class="form-control" id="state" required v-model="localidad">
+                </div>
+
+                <div class="col-12">
+                  <label for="formFile" class="form-label">Foto</label>
+                  <input class="form-control-file" type="file" id="formFile" @change="changeFiles" ref="miarchivo">
+                </div>
               </div>
-
-              <div class="col-md-6 my-2">
-                <label for="country" class="form-label">Ciudad</label>
-                <input type="text" class="form-control" id="country" required v-model="ciudad">
-              </div>
-
-              <div class="col-md-6 my-2">
-                <label for="state" class="form-label">Localidad</label>
-                <input type="text" class="form-control" id="state" required v-model="localidad">
-              </div>
-
-              <div class="col-12">
-                <label for="formFile" class="form-label">Foto</label>
-                <input class="form-control-file" type="file" id="formFile" @change="changeFiles" ref="miarchivo">
-              </div>
-            </div>
-            <br>
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Actualizar</button>
-          </form>
+              <br>
+              <button class="w-100 btn btn-primary btn-lg" type="submit">Actualizar</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
-</div>
-</body>
+    </main>
+  </div>
+  </body>
 </template>
 
 <style>

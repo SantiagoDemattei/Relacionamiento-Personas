@@ -1,4 +1,21 @@
 <template>
+
+  <header class="headMenu">
+    <nav class="navMenu">
+      <div class="containerMenu">
+        <div class="logoMenu"><a href="#">RELACIONAMIENTO DE PERSONAS</a></div>
+        <ul class="ulMenu">
+          <li> <RouterLink to="/MenuPrincipal">Home</RouterLink> </li>
+          <li> <RouterLink to="/Reporte">Reportes</RouterLink> </li>
+          <li> <RouterLink to="/ActualizacionDeDatos">Actualizar datos</RouterLink></li>
+          <li> <RouterLink to="/MyAutorizaciones">Autorizaciones</RouterLink> </li>
+          <li> <RouterLink to="/Notificaciones">Notificaciones</RouterLink> </li>
+          <li> <RouterLink to="/" @click="cerrarSesion">Cerrar sesión</RouterLink> </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
   <body class="bodyAutorizaciones">
 
   <section class="mainAutorizaciones">
@@ -35,65 +52,6 @@
 }
 
 /* HEADER */
-
-.navAutorizaciones {
-  background-color: #222222;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.logo{
-  align-items: center;
-  margin-bottom: 25px;
-  justify-content: justify;
-  text-align: center;
-  color: white;
-}
-
-.navAutorizaciones ul {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  font-size: 25px;
-  flex-wrap: row nowrap;
-}
-
-.navAutorizaciones a {
-  align-items: center;
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.4s ease-in-out;
-  font-weight: bold;
-  font-family: Tahoma;
-}
-
-.navAutorizaciones.active {
-  align-items: center;
-  background-color: #b3fff9;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.navAutorizaciones.active a {
-  align-items: center;
-  color: rgb(255, 255, 255);
-}
-
-.navAutorizaciones.active .container {
-  align-items: center;
-  padding: 10px 0;
-}
-
-.navAutorizaciones a.current,
-.navAutorizaciones a:hover {
-  align-items: center;
-  color: #ffffff;
-  font-weight: bold;
-}
-
 .containerAutorizaciones {
   margin:  auto;
   max-width: 1100px;

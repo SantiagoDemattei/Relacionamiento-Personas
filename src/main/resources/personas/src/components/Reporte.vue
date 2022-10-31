@@ -1,18 +1,22 @@
 <template>
+
+  <header class="headMenu">
+    <nav class="navMenu">
+      <div class="containerMenu">
+        <div class="logoMenu"><a href="#">RELACIONAMIENTO DE PERSONAS</a></div>
+        <ul class="ulMenu">
+          <li> <RouterLink to="/MenuPrincipal">Home</RouterLink> </li>
+          <li> <RouterLink to="/Reporte">Reportes</RouterLink> </li>
+          <li> <RouterLink to="/ActualizacionDeDatos">Actualizar datos</RouterLink></li>
+          <li> <RouterLink to="/MyAutorizaciones">Autorizaciones</RouterLink> </li>
+          <li> <RouterLink to="/Notificaciones">Notificaciones</RouterLink> </li>
+          <li> <RouterLink to="/" @click="cerrarSesion">Cerrar sesión</RouterLink> </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
   <body class="bodyReporte">
-  <nav class="navReporte">
-    <div class="containerReporte">
-      <h1 class="logoReporte"><a href="#">RELACIONAMIENTO DE PERSONAS</a></h1>
-      <ul>
-        <li><a href="menuprincipal.html" class="current">Home</a></li>
-        <li><a href="reporte.html">Reportes</a></li>
-        <li><a href="actualizaciondedatos.html" class="actu">Actualizar datos</a></li>
-        <li><a href="autorizaciones.html">Autorizaciones</a></li>
-        <li><a href="notificaciones.html">Notificaciones</a></li>
-        <li><a href="index.html">Cerrar Sesion</a></li>
-      </ul>
-    </div>
-  </nav>
 
   <section class="mainReporte">
     <div class="contenedor-baseReporte">
@@ -24,7 +28,7 @@
             <th>DNI</th>
             <th>NOMBRE</th>
             <th>APELLIDO</th>
-            <th>PROVINCIA</th>
+            <th>LOCALIDAD</th>
             <th>CIUDAD</th>
             <th>FECHA DE NACIMIENTO</th>
           </tr>
@@ -35,14 +39,6 @@
             <td>{{per.localidad}}</td>
             <td>{{per.ciudad}}</td>
             <td>{{per.fechaNacimiento}}</td>
-          </tr>
-          <tr>
-            <td>0000002</td>
-            <td>Persona 3</td>
-            <td>Persona 4</td>
-            <td>C.A.B.A.</td>
-            <td>Loca2</td>
-            <td>mm/dd/aaaa</td>
           </tr>
         </table>
       </div><br>
@@ -75,64 +71,6 @@
 </template>
 
 <style>
-.nav {
-  background-color: #222222;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  justify-content: justify;
-  transition: all 0.3s ease-in-out;
-}
-
-.logo {
-  align-items: center;
-  margin-bottom: 25px;
-  justify-content: justify;
-  text-align: center;
-  color: rgb(27, 16, 16);
-}
-
-.nav ul {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  list-style-type: none;
-  font-size: 25px;
-  flex-wrap: row nowrap;
-}
-
-.nav a {
-  align-items: center;
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.4s ease-in-out;
-  font-weight: bold;
-  font-family: Tahoma;
-}
-
-.nav.active {
-  align-items: center;
-  background-color: rgb(199, 199, 199);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.nav.active a {
-  align-items: center;
-  color: rgb(255, 255, 255);
-}
-
-.nav.active .container {
-  align-items: center;
-  padding: 10px 0;
-}
-
-.nav a.current,
-.nav a:hover {
-  align-items: center;
-  color: #ffffff;
-  font-weight: bold;
-}
 
 .container {
   margin: auto;
